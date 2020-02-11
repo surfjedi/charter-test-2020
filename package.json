@@ -1,0 +1,14 @@
+{
+  "name": "charter2020",
+  "version": "1.0.0",
+  "description": "for application code test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lee Blazek <info@berzerk.co.nz> (http://berzerk.co.nz/)",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
