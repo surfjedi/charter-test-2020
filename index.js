@@ -1,9 +1,9 @@
-console.log(`--------------------------------
-
-
-
-
-  `)
+// console.log(`--------------------------------
+//
+//
+//
+//
+//   `)
 const fetch = require('node-fetch');
 fetch('http://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes')
   .then((response) => response.json())
@@ -39,11 +39,23 @@ fetch('http://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes
         let thing = {
           [id] : {
             totalDurationSec,
-            averageEpisodesPerSeason: av.toFixed(1),
+            averageEpisodesPerSeason: +av.toFixed(1),
             episodes
           }
         }
         console.dir(thing, {depth: null, colors: true});
+
+        console.assert(true == false, 'test fail')
+        console.assert(Object.keys(thing)[0] == [ '2993' ],  'wrong id')
+        console.assert(typeof thing[Object.keys(thing)[0]].totalDurationSec == 'number', 'typeof duration not number')
+        console.assert(typeof thing[Object.keys(thing)[0]].averageEpisodesPerSeason == 'number', 'typeof average not number')
+        console.assert(typeof thing[Object.keys(thing)[0]].episodes == 'object', 'typeof episodes not object')
+        console.assert(typeof thing[Object.keys(thing)[0]].episodes[0] == 'object', 'typeof episodes[0] not object')
+        console.assert(thing[Object.keys(thing)[0]].episodes[0][553946].sequenceNumber == 's1e1', 'id 553946 not sequence s1e1')
+        console.assert(thing[Object.keys(thing)[0]].episodes[0][553946].shortTitle == ' The Vanishing of Will Byers', 'title not correct')
+        console.assert(thing[Object.keys(thing)[0]].episodes[0][553946].shortSummary == 'A young boy mysteriously disappears, and his panicked mother demands that the police find him')
+
+        console.log('If you see no "Asserion Failed Messages there are not errors" ');
       }
     })
   });
